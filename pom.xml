@@ -44,24 +44,12 @@
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.10.1</version> <!-- Use a recent version -->
-                <configuration>
-                    <source>21</source>
-                    <target>21</target>
-                    <compilerArgs>
-                        <arg>--enable-preview</arg>
-                    </compilerArgs>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
                 <version>3.3.0</version>
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>kodok.ConnectFour</mainClass> <!-- Adjust main class as needed -->
+                            <mainClass>Main.java</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
@@ -73,7 +61,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>kodok.ConnectFour</mainClass> <!-- Adjust main class as needed -->
+                            <mainClass>Main.java</mainClass>
                         </manifest>
                     </archive>
                     <descriptorRefs>
