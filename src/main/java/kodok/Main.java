@@ -1,7 +1,9 @@
-package kodok; // Csomag deklaráció
+package kodok;
+
 public class Main {
     public static void main(String[] args) {
-        ConnectFour game = new ConnectFour(); // Játék példányosítása
-        game.playGame(); // Játék indítása
+        ConnectFour game = new ConnectFour();
+        game.playGame();
     }
 }
+
