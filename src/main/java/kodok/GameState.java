@@ -1,57 +1,87 @@
 package kodok;
 
-public class GameState {
-    private final char[][] board;
-    private final int rows;
-    private final int columns;
-    private final Player human;
-    private final Player ai;
-    private Player currentPlayer;
+import java.io.*;
+import java.util.Arrays;
 
-    public GameState(int rows, int columns, String humanName) {
+public class GameState {
+    private char[][] board;
+    private int rows;
+    private int columns;
+
+    public GameState(int rows, int columns) {
         this.rows = rows;
         this.columns = columns;
         this.board = new char[rows][columns];
-        this.human = new Player(humanName, 'Y');
-        this.ai = new Player("Gép", 'R');
-        this.currentPlayer = human;
         resetBoard();
     }
 
     private void resetBoard() {
-        for (int r = 0; r < rows; r++) {
-            for (int c = 0; c < columns; c++) {
-                board[r][c] = '.';
+        for (int i = 0; i < rows; i++) {
+            Arrays.fill(board[i], ConnectFour.EMPTY);
+        }
+    }
+
+    public void dropPiece(Move move) {
+        for (int i = rows - 1; i >= 0; i--) {
+            if (board[i][move.getColumn()] == ConnectFour.EMPTY) {
+                board[i][move.getColumn()] = move.getSymbol();
+                break;
             }
         }
+    }
+
+    public boolean isColumnAvailable(int column) {
+        return board[0][column] == ConnectFour.EMPTY;
+    }
+
+    public boolean isBoardFull() {
+        for (int c = 0; c < columns; c++) {
+            if (board[0][c] == ConnectFour.EMPTY) {
+                return false;
+            }
+        }
+        return true;
     }
 
     public char[][] getBoard() {
         return board;
     }
 
-    public Player getHuman() {
-        return human;
+    public void printBoard() {
+        for (int r = 0; r < rows; r++) {
+            for (int c = 0; c < columns; c++) {
+                System.out.print(board[r][c] + " ");
+            }
+            System.out.println();
+        }
+        System.out.println("Oszlopok: " + String.join(" ", Arrays.stream("abcdefghijklmnopqrstuvwxyz".split("")).limit(columns).toArray(String[]::new)));
     }
 
-    public Player getAI() {
-        return ai;
-    }
-
-    public Player getCurrentPlayer() {
-        return currentPlayer;
-    }
-
-    public void switchPlayer() {
-        currentPlayer = (currentPlayer.equals(human) ? ai : human);
-    }
-
-    public boolean isBoardFull() {
-        for (int c = 0; c < columns; c++) {
-            if (board[0][c] == '.') {
-                return false;
+    public void saveToFile(String filePath) throws IOException {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath))) {
+            for (char[] row : board) {
+                writer.write(row);
+                writer.newLine();
             }
         }
-        return true;
+    }
+
+    public static GameState loadFromFile(String filePath) throws IOException {
+        try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
+            String line;
+            StringBuilder boardBuilder = new StringBuilder();
+            while ((line = reader.readLine()) != null) {
+                boardBuilder.append(line).append("\n");
+            }
+            String[] rows = boardBuilder.toString().trim().split("\n");
+            int rowCount = rows.length;
+            int columnCount = rows[0].length();
+            GameState gameState = new GameState(rowCount, columnCount);
+            for (int i = 0; i < rowCount; i++) {
+                gameState.board[i] = rows[i].toCharArray();
+            }
+            return gameState;
+        }
     }
 }
+

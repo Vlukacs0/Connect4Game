@@ -9,11 +9,13 @@ public class Move {
         this.symbol = symbol;
     }
 
-    public int column() {
+    public int getColumn() {
         return column;
     }
 
-    public char symbol() {
+    public char getSymbol() {
         return symbol;
     }
 }
+
+

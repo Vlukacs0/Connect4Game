@@ -9,21 +9,11 @@ public class Player {
         this.symbol = symbol;
     }
 
-    public String name() {
+    public String getName() {
         return name;
     }
 
-    public char symbol() {
+    public char getSymbol() {
         return symbol;
     }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) return true;
-        if (!(obj instanceof Player)) return false;
-        Player player = (Player) obj;
-        return symbol == player.symbol;
-    }
 }
-
-
