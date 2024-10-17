@@ -21,7 +21,6 @@ public class ConnectFour {
         }
         this.rows = rows;
         this.columns = columns;
-        this.human = new Player("Ember", 'Y');
         this.ai = new Player("Gép", 'R');
     }
 
@@ -37,6 +36,9 @@ public class ConnectFour {
             if (!filePath.isEmpty()) {
                 gameState = GameState.loadFromFile(filePath); // Itt töltjük be a GameState-t
             } else {
+                System.out.print("Kérlek, add meg a neved: ");
+                String playerName = scanner.nextLine();
+                human = new Player(playerName, 'Y'); // Sárga játékos név megadása
                 gameState = new GameState(rows, columns);
             }
         } catch (IOException e) {
@@ -116,3 +118,4 @@ public class ConnectFour {
         return false; // Alapértelmezett visszatérési érték
     }
 }
+
