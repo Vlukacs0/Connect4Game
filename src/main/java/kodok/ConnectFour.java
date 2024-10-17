@@ -13,7 +13,7 @@ public class ConnectFour {
     private Random random = new Random();
     private Player human;
     private Player ai;
-    private GameState gameState; // Definálva
+    private GameState gameState; // Játék állapot
 
     public ConnectFour(int rows, int columns) {
         if (rows < 4 || columns < 4 || rows > 12 || columns > 12 || columns > rows) {
@@ -21,11 +21,23 @@ public class ConnectFour {
         }
         this.rows = rows;
         this.columns = columns;
-        this.ai = new Player("Gép", 'R');
+        this.ai = new Player("Gép", 'R'); // Gép név és szín
     }
 
     public char getEmptySymbol() {
         return EMPTY;
+    }
+
+    public Player getHuman() {
+        return human; // Humán játékos visszaadása
+    }
+
+    public Player getAI() {
+        return ai; // Gépi játékos visszaadása
+    }
+
+    public GameState getGameState() {
+        return gameState; // Játék állapot visszaadása
     }
 
     public void playGame() {
@@ -34,12 +46,12 @@ public class ConnectFour {
 
         try {
             if (!filePath.isEmpty()) {
-                gameState = GameState.loadFromFile(filePath); // Itt töltjük be a GameState-t
+                gameState = GameState.loadFromFile(filePath); // Fájl betöltése
             } else {
                 System.out.print("Kérlek, add meg a neved: ");
                 String playerName = scanner.nextLine();
                 human = new Player(playerName, 'Y'); // Sárga játékos név megadása
-                gameState = new GameState(rows, columns);
+                gameState = new GameState(rows, columns); // Új játékállapot létrehozása
             }
         } catch (IOException e) {
             System.out.println("Hiba a fájl beolvasása közben: " + e.getMessage());
@@ -118,4 +130,5 @@ public class ConnectFour {
         return false; // Alapértelmezett visszatérési érték
     }
 }
+
 
