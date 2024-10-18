@@ -1,13 +1,27 @@
-# Default ignored files
+# IDE-specifikus fájlok
+/.idea/
+/*.iml
+
+# IntelliJ IDEA shelf
 /shelf/
+
+# IntelliJ IDEA fájlok
 /workspace.xml
-/shelf/
 /vcs.xml
-/shelf/
 /misc.xml
-/shelf/
 /jarRepositories.xml
-/shelf/
 /encodings.xml
-/shelf/
 /compiler.xml
+
+# Build fájlok
+/bin/
+*/target/
+
+# Log fájlok
+*.log
+
+# MacOS
+.DS_Store
+
+# Windows
+Thumbs.db
