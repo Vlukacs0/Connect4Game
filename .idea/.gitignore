@@ -1,11 +1,4 @@
-# IDE-specifikus fájlok
-/.idea/
-/*.iml
-
-# IntelliJ IDEA shelf
 /shelf/
-
-# IntelliJ IDEA fájlok
 /workspace.xml
 /vcs.xml
 /misc.xml
@@ -13,15 +6,3 @@
 /encodings.xml
 /compiler.xml
 
-# Build fájlok
-/bin/
-*/target/
-
-# Log fájlok
-*.log
-
-# MacOS
-.DS_Store
-
-# Windows
-Thumbs.db
