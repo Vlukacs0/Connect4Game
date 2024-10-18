@@ -74,9 +74,9 @@ public class ConnectFour {
 
             gameState.dropPiece(move);
 
-            if (checkWin(currentPlayer.getSymbol())) {
+            if (checkWin(currentPlayer.symbol())) {
                 gameState.printBoard();
-                System.out.println(currentPlayer.getName() + " nyert!");
+                System.out.println(currentPlayer.name() + " nyert!");
                 break;
             }
 
@@ -97,7 +97,7 @@ public class ConnectFour {
             String input = scanner.nextLine();
             column = input.charAt(0) - 'a';
         } while (column < 0 || column >= columns || !isColumnAvailable(column));
-        return new Move(column, human.getSymbol());
+        return new Move(column, human.symbol());
     }
 
     private Move aiTurn() {
@@ -106,7 +106,7 @@ public class ConnectFour {
             column = random.nextInt(columns);
         } while (!isColumnAvailable(column));
         System.out.println("A gép az '" + (char) ('a' + column) + "' oszlopba rakott.");
-        return new Move(column, ai.getSymbol());
+        return new Move(column, ai.symbol());
     }
 
     private boolean isColumnAvailable(int column) {

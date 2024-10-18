@@ -1,20 +1,20 @@
 package kodok;
 
-public class Move {
-    private final int column;
-    private final char symbol;
+public record Move(int column, char symbol) {
 
-    public Move(int column, char symbol) {
-        this.column = column;
-        this.symbol = symbol;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Move move)) return false;
+        return column == move.column && symbol == move.symbol;
     }
 
-    public int getColumn() {
-        return column;
-    }
-
-    public char getSymbol() {
-        return symbol;
+    @Override
+    public String toString() {
+        return "Move{" +
+                "column=" + column +
+                ", symbol=" + symbol +
+                '}';
     }
 }
 

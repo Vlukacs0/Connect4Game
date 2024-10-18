@@ -4,9 +4,9 @@ import java.io.*;
 import java.util.Arrays;
 
 public class GameState {
-    private char[][] board;
-    private int rows;
-    private int columns;
+    private final char[][] board;
+    private final int rows;
+    private final int columns;
     private char currentPlayer;
 
     public GameState(int rows, int columns) {
@@ -25,8 +25,8 @@ public class GameState {
 
     public void dropPiece(Move move) {
         for (int i = rows - 1; i >= 0; i--) {
-            if (board[i][move.getColumn()] == ConnectFour.EMPTY) {
-                board[i][move.getColumn()] = move.getSymbol();
+            if (board[i][move.column()] == ConnectFour.EMPTY) {
+                board[i][move.column()] = move.symbol();
                 break;
             }
         }
@@ -49,10 +49,6 @@ public class GameState {
         return board;
     }
 
-    public char getCurrentPlayer() {
-        return currentPlayer;
-    }
-
     public void setCurrentPlayer(char currentPlayer) {
         this.currentPlayer = currentPlayer;
     }
@@ -66,7 +62,7 @@ public class GameState {
             sb.append("\n");
         }
         sb.append("Oszlopok: ").append(String.join(" ", Arrays.stream("abcdefghijklmnopqrstuvwxyz".split("")).limit(columns).toArray(String[]::new)));
-        System.out.println(sb.toString());
+        System.out.println(sb);
     }
 
     public void saveToFile(String filePath) throws IOException {

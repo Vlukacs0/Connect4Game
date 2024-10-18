@@ -17,27 +17,25 @@ class GameStateTest {
         char[][] board = gameState.getBoard();
         for (char[] row : board) {
             for (char cell : row) {
-                assertEquals(ConnectFour.EMPTY, cell); // Minden cellának üresnek kell lennie
+                assertEquals(ConnectFour.EMPTY, cell);
             }
         }
     }
 
     @Test
     void testDropPiece() {
-        Move move = new Move(0, 'Y');
+        Move move = new Move(0, 'S');
         gameState.dropPiece(move);
-        assertEquals('Y', gameState.getBoard()[5][0]); // Az utolsó sorba kell esnie
+        assertEquals('S', gameState.getBoard()[5][0]);
     }
 
     @Test
     void testIsBoardFull() {
         for (int i = 0; i < 7; i++) {
             for (int j = 0; j < 6; j++) {
-                gameState.dropPiece(new Move(i, 'Y'));
+                gameState.dropPiece(new Move(i, 'S'));
             }
         }
-        assertTrue(gameState.isBoardFull()); // A tábla telített
+        assertTrue(gameState.isBoardFull());
     }
-
-    // Itt több tesztet is hozzáadhatsz, például a fájl beolvasására és mentésére
 }
