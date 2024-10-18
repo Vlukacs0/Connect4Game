@@ -7,12 +7,14 @@ public class GameState {
     private char[][] board;
     private int rows;
     private int columns;
+    private char currentPlayer; // Jelenlegi játékos szimbóluma
 
     public GameState(int rows, int columns) {
         this.rows = rows;
         this.columns = columns;
         this.board = new char[rows][columns];
         resetBoard();
+        this.currentPlayer = 'Y'; // Alapértelmezett a sárga játékos
     }
 
     private void resetBoard() {
@@ -47,14 +49,24 @@ public class GameState {
         return board;
     }
 
+    public char getCurrentPlayer() {
+        return currentPlayer;
+    }
+
+    public void setCurrentPlayer(char currentPlayer) {
+        this.currentPlayer = currentPlayer;
+    }
+
     public void printBoard() {
+        StringBuilder sb = new StringBuilder();
         for (int r = 0; r < rows; r++) {
             for (int c = 0; c < columns; c++) {
-                System.out.print(board[r][c] + " ");
+                sb.append(board[r][c]).append(" ");
             }
-            System.out.println();
+            sb.append("\n");
         }
-        System.out.println("Oszlopok: " + String.join(" ", Arrays.stream("abcdefghijklmnopqrstuvwxyz".split("")).limit(columns).toArray(String[]::new)));
+        sb.append("Oszlopok: ").append(String.join(" ", Arrays.stream("abcdefghijklmnopqrstuvwxyz".split("")).limit(columns).toArray(String[]::new)));
+        System.out.println(sb.toString());
     }
 
     public void saveToFile(String filePath) throws IOException {
@@ -63,6 +75,8 @@ public class GameState {
                 writer.write(row);
                 writer.newLine();
             }
+            writer.write(currentPlayer); // Jelenlegi játékos szimbóluma
+            writer.newLine();
         }
     }
 
@@ -70,7 +84,7 @@ public class GameState {
         try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
             String line;
             StringBuilder boardBuilder = new StringBuilder();
-            while ((line = reader.readLine()) != null) {
+            while ((line = reader.readLine()) != null && !line.isEmpty()) {
                 boardBuilder.append(line).append("\n");
             }
             String[] rows = boardBuilder.toString().trim().split("\n");
@@ -80,8 +94,14 @@ public class GameState {
             for (int i = 0; i < rowCount; i++) {
                 gameState.board[i] = rows[i].toCharArray();
             }
+            // Jelenlegi játékos szimbólumának beállítása
+            line = reader.readLine();
+            if (line != null && !line.isEmpty()) {
+                gameState.setCurrentPlayer(line.charAt(0));
+            }
             return gameState;
+        } catch (IOException e) {
+            throw new IOException("Hiba a fájl beolvasása közben: " + e.getMessage());
         }
     }
 }
-

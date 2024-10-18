@@ -22,6 +22,7 @@ public class ConnectFour {
         this.rows = rows;
         this.columns = columns;
         this.ai = new Player("Gép", 'R'); // Gép név és szín
+        this.gameState = new GameState(rows, columns);
     }
 
     public char getEmptySymbol() {
@@ -29,20 +30,21 @@ public class ConnectFour {
     }
 
     public Player getHuman() {
-        return human; // Humán játékos visszaadása
+        return human;
     }
 
     public Player getAI() {
-        return ai; // Gépi játékos visszaadása
+        return ai;
     }
 
     public GameState getGameState() {
-        return gameState; // Játék állapot visszaadása
+        return gameState;
     }
 
     public void playGame() {
         System.out.print("Kérlek, add meg a játékállás fájl nevét (vagy nyomj Entert az új játékhoz): ");
-        String filePath = scanner.nextLine();
+        String filePath = scanner.nextLine().trim();
+        System.out.println("Fájl név beolvasva: " + filePath);
 
         try {
             if (!filePath.isEmpty()) {
@@ -92,8 +94,8 @@ public class ConnectFour {
         int column;
         do {
             System.out.print("Válassz egy oszlopot (a-" + (char) ('a' + columns - 1) + "): ");
-            char input = scanner.next().charAt(0);
-            column = input - 'a';
+            String input = scanner.nextLine(); // Teljes sor beolvasása
+            column = input.charAt(0) - 'a'; // Számítsd ki az oszlop számát
         } while (column < 0 || column >= columns || !isColumnAvailable(column));
         return new Move(column, human.getSymbol());
     }
@@ -111,24 +113,67 @@ public class ConnectFour {
         return gameState.isColumnAvailable(column);
     }
 
-    private boolean checkWin(char piece) {
+    public boolean checkWin(char piece) {
         return checkHorizontalWin(piece) || checkVerticalWin(piece) || checkDiagonalWin(piece);
     }
 
     private boolean checkHorizontalWin(char piece) {
-        // Implementáld a horizontális nyerés ellenőrzését
-        return false; // Alapértelmezett visszatérési érték
+        for (int r = 0; r < rows; r++) {
+            int count = 0;
+            for (int c = 0; c < columns; c++) {
+                if (gameState.getBoard()[r][c] == piece) {
+                    count++;
+                    if (count == 4) return true;
+                } else {
+                    count = 0;
+                }
+            }
+        }
+        return false;
     }
 
     private boolean checkVerticalWin(char piece) {
-        // Implementáld a vertikális nyerés ellenőrzését
-        return false; // Alapértelmezett visszatérési érték
+        for (int c = 0; c < columns; c++) {
+            int count = 0;
+            for (int r = 0; r < rows; r++) {
+                if (gameState.getBoard()[r][c] == piece) {
+                    count++;
+                    if (count == 4) return true;
+                } else {
+                    count = 0;
+                }
+            }
+        }
+        return false;
     }
 
     private boolean checkDiagonalWin(char piece) {
-        // Implementáld az átlós nyerés ellenőrzését
-        return false; // Alapértelmezett visszatérési érték
+        for (int r = 3; r < rows; r++) {
+            for (int c = 0; c < columns - 3; c++) {
+                if (gameState.getBoard()[r][c] == piece &&
+                        gameState.getBoard()[r - 1][c + 1] == piece &&
+                        gameState.getBoard()[r - 2][c + 2] == piece &&
+                        gameState.getBoard()[r - 3][c + 3] == piece) {
+                    return true;
+                }
+            }
+        }
+
+        for (int r = 0; r < rows - 3; r++) {
+            for (int c = 0; c < columns - 3; c++) {
+                if (gameState.getBoard()[r][c] == piece &&
+                        gameState.getBoard()[r + 1][c + 1] == piece &&
+                        gameState.getBoard()[r + 2][c + 2] == piece &&
+                        gameState.getBoard()[r + 3][c + 3] == piece) {
+                    return true;
+                }
+            }
+        }
+
+        return false;
     }
 }
+
+
 
 
