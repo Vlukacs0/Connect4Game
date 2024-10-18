@@ -9,7 +9,7 @@ class ConnectFourTest {
 
     @BeforeEach
     void setUp() {
-        game = new ConnectFour(7, 6); // 7 sor, 6 oszlop
+        game = new ConnectFour(7, 6);
     }
 
     @Test
@@ -21,19 +21,18 @@ class ConnectFourTest {
 
     @Test
     void testDropPiece() {
-        Move move = new Move(0, 'Y');
+        Move move = new Move(0, 'S');
         game.getGameState().dropPiece(move);
-        assertEquals('Y', game.getGameState().getBoard()[6][0]); // Az utolsó sorba kell esnie
+        assertEquals('S', game.getGameState().getBoard()[6][0]);
     }
     @Test
     void testWinningCondition() {
-        // Nyerés vízszintesen
-        game.getGameState().dropPiece(new Move(0, 'Y'));
-        game.getGameState().dropPiece(new Move(1, 'Y'));
-        game.getGameState().dropPiece(new Move(2, 'Y'));
-        game.getGameState().dropPiece(new Move(3, 'Y'));
+        game.getGameState().dropPiece(new Move(0, 'S'));
+        game.getGameState().dropPiece(new Move(1, 'S'));
+        game.getGameState().dropPiece(new Move(2, 'S'));
+        game.getGameState().dropPiece(new Move(3, 'S'));
 
-        assertTrue(game.checkWin('Y')); // A 'Y' játékosnak nyernie kell
+        assertTrue(game.checkWin('S'));
     }
 }
 

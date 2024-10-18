@@ -7,44 +7,39 @@ public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        // Sorok és oszlopok kérése
         System.out.print("Kérlek, add meg a táblázat sorainak számát (N): ");
         int rows = scanner.nextInt();
-        scanner.nextLine(); // Olvassuk el a sortörést
+        scanner.nextLine();
 
         System.out.print("Kérlek, add meg a táblázat oszlopainak számát (M): ");
         int columns = scanner.nextInt();
-        scanner.nextLine(); // Olvassuk el a sortörést
+        scanner.nextLine();
 
         ConnectFour game = new ConnectFour(rows, columns);
-
-        // Játékállás fájlnevének kérése és betöltése
-        System.out.print("Kérlek, add meg a játékállás fájl nevét (vagy nyomj Entert az új játékhoz): ");
+        System.out.print("Add meg a játékállás fájl nevét (vagy nyomj Entert az új játékhoz): ");
         String filePath = scanner.nextLine().trim();
 
-        // Fájl betöltése, ha van megadott fájl
         if (!filePath.isEmpty()) {
             try {
-                game.getGameState().loadFromFile(filePath); // Játékállás betöltése
+                game.getGameState().loadFromFile(filePath);
             } catch (IOException e) {
                 System.out.println("Hiba a fájl beolvasása közben: " + e.getMessage());
-                return; // Kilépünk, ha a fájl beolvasása nem sikerült
+                return;
             }
         }
 
-        game.playGame(); // Játék indítása
+        game.playGame();
 
-        // Játék végén a pálya állapotának mentése
         System.out.print("Kérlek, add meg a fájl nevét, ahová a játék állapotát szeretnéd menteni: ");
         String saveFilePath = scanner.nextLine();
 
         try {
-            game.getGameState().saveToFile(saveFilePath); // Játékállás mentése
+            game.getGameState().saveToFile(saveFilePath);
             System.out.println("A pálya sikeresen kiírva a '" + saveFilePath + "' fájlba.");
         } catch (IOException e) {
             System.out.println("Hiba a fájl kiírása közben: " + e.getMessage());
         }
 
-        scanner.close(); // Scanner bezárása
+        scanner.close();
     }
 }

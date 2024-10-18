@@ -7,14 +7,14 @@ public class GameState {
     private char[][] board;
     private int rows;
     private int columns;
-    private char currentPlayer; // Jelenlegi játékos szimbóluma
+    private char currentPlayer;
 
     public GameState(int rows, int columns) {
         this.rows = rows;
         this.columns = columns;
         this.board = new char[rows][columns];
         resetBoard();
-        this.currentPlayer = 'Y'; // Alapértelmezett a sárga játékos
+        this.currentPlayer = 'S';
     }
 
     private void resetBoard() {
@@ -75,7 +75,7 @@ public class GameState {
                 writer.write(row);
                 writer.newLine();
             }
-            writer.write(currentPlayer); // Jelenlegi játékos szimbóluma
+            writer.write(currentPlayer);
             writer.newLine();
         }
     }
@@ -94,7 +94,6 @@ public class GameState {
             for (int i = 0; i < rowCount; i++) {
                 gameState.board[i] = rows[i].toCharArray();
             }
-            // Jelenlegi játékos szimbólumának beállítása
             line = reader.readLine();
             if (line != null && !line.isEmpty()) {
                 gameState.setCurrentPlayer(line.charAt(0));
