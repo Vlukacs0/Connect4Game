@@ -48,39 +48,39 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.ConnectFour (1).executor": "Run",
-    "Application.ConnectFour.executor": "Run",
-    "Application.Main.executor": "Run",
-    "Application.kodok.Main.executor": "Run",
-    "JUnit.ConnectFourTest.executor": "Run",
-    "JUnit.ConnectFourTest.testAIInitialization.executor": "Run",
-    "JUnit.ConnectFourTest.testGameBoardInitialization.executor": "Run",
-    "JUnit.ConnectFourTest.testGameStateInitialization.executor": "Run",
-    "JUnit.ConnectFourTest.testInitialBoardIsEmpty.executor": "Run",
-    "JUnit.ConnectFourTest.testInitialization.executor": "Run",
-    "JUnit.ConnectFourTest.testInvalidBoardSize.executor": "Run",
-    "JUnit.ConnectFourTest.testInvalidGameSize.executor": "Run",
-    "JUnit.ConnectFourTest.testInvalidRowsAndColumns.executor": "Run",
-    "JUnit.ConnectFourTest.testIsColumnAvailable.executor": "Run",
-    "JUnit.ConnectFourTest.testLoadGameFromFile.executor": "Run",
-    "JUnit.ConnectFourTest.testLoadGameFromFileInvalid.executor": "Run",
-    "JUnit.ConnectFourTest.testSaveGameToFile.executor": "Run",
-    "JUnit.ConnectFourTest.testValidMove.executor": "Run",
-    "JUnit.ConnectFourTest.testWinningCondition.executor": "Run",
-    "JUnit.GameStateTest.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
-    "ignore.preview.features.used": "true",
-    "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "reference.settingsdialog.project.grazie"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.ConnectFour (1).executor&quot;: &quot;Run&quot;,
+    &quot;Application.ConnectFour.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;Application.kodok.Main.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ConnectFourTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ConnectFourTest.testAIInitialization.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ConnectFourTest.testGameBoardInitialization.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ConnectFourTest.testGameStateInitialization.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ConnectFourTest.testInitialBoardIsEmpty.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ConnectFourTest.testInitialization.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ConnectFourTest.testInvalidBoardSize.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ConnectFourTest.testInvalidGameSize.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ConnectFourTest.testInvalidRowsAndColumns.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ConnectFourTest.testIsColumnAvailable.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ConnectFourTest.testLoadGameFromFile.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ConnectFourTest.testLoadGameFromFileInvalid.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ConnectFourTest.testSaveGameToFile.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ConnectFourTest.testValidMove.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ConnectFourTest.testWinningCondition.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.GameStateTest.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.preview.features.used&quot;: &quot;true&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.project.grazie&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Application.Main">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="kodok.Main" />
@@ -375,7 +375,31 @@
       <option name="project" value="LOCAL" />
       <updated>1729255492340</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="maven files">
+      <option name="closed" value="true" />
+      <created>1729256134910</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1729256134910</updated>
+    </task>
+    <task id="LOCAL-00026" summary="maven files">
+      <option name="closed" value="true" />
+      <created>1729256239317</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1729256239317</updated>
+    </task>
+    <task id="LOCAL-00027" summary="maven files">
+      <option name="closed" value="true" />
+      <created>1729256301652</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1729256301652</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
